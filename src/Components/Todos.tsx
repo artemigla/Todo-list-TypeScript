@@ -1,5 +1,7 @@
 import React, { useState, ChangeEvent } from "react";
 import { ITodos } from "../Interfaces/ITodos";
+import { ShowTaskList } from "./ShowTaskList";
+
 export const Todos: React.FC = () => {
 
     const [task, setTask] = useState<string>("");
@@ -20,6 +22,9 @@ export const Todos: React.FC = () => {
         <div>
             <input type="text" onChange={handlerInput} value={task} />
             <button onClick={handlerButton}>Add task</button>
+            <div>
+                <ShowTaskList todos={todos} />
+            </div>
         </div>
     )
 }

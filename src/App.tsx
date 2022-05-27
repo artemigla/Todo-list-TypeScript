@@ -1,9 +1,9 @@
 import React from 'react';
-import { ShowTaskList } from './Components/ShowTaskList';
+import { Todos } from './Components/Todos';
 const App: React.FC = () => {
   return (
     <div>
-      <ShowTaskList />
+      <Todos />
     </div>
   );
 }
