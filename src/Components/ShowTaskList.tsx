@@ -1,8 +1,10 @@
 import React from 'react';
 import { ITodos } from '../Interfaces/ITodos';
+
 type PropTypes = {
     todos: ITodos[]
 }
+
 export const ShowTaskList: React.FC<PropTypes> = ({ todos }) => {
 
     const ItemList = todos.map(({ id, task }) => {
