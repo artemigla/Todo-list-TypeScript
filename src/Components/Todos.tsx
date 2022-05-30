@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, useEffect } from "react";
 import { ITodos } from "../Interfaces/ITodos";
 import { ShowTaskList } from "./ShowTaskList";
-
+import style from '../Styles/styles.module.scss';
 export const Todos: React.FC = () => {
 
     const [task, setTask] = useState<string>("");
@@ -27,12 +27,10 @@ export const Todos: React.FC = () => {
     }, [todos]);
 
     return (
-        <div>
+        <div className={style.container}>
             <input type="text" onChange={handlerInput} value={task} />
             <button onClick={handlerButton}>Add task</button>
-            <div>
-                <ShowTaskList todos={todos} />
-            </div>
+            <ShowTaskList todos={todos} />
         </div>
     )
 }
