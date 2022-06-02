@@ -6,9 +6,10 @@ import { AiFillDelete } from 'react-icons/ai';
 type PropTypes = {
     todos: ITodos[],
     DeleteTask: (id: string) => void,
+    clearTodoList: () => void;
 }
 
-export const ShowTaskList: React.FC<PropTypes> = ({ todos, DeleteTask }) => {
+export const ShowTaskList: React.FC<PropTypes> = ({ todos, DeleteTask, clearTodoList }) => {
 
     const ItemList = todos.map(({ id, task }) => {
         return (
@@ -25,6 +26,7 @@ export const ShowTaskList: React.FC<PropTypes> = ({ todos, DeleteTask }) => {
     return (
         <div>
             {todos.length ? ItemList : (<h3>Todo list empty</h3>)}
+            {todos.length > 1 ? <button onClick={clearTodoList}>Clear all list</button> : null}
         </div>
     )
 }

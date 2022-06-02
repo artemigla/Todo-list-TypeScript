@@ -8,10 +8,7 @@ export const Todos: React.FC = () => {
 
     const [task, setTask] = useState<string>("");
     const [todos, setTodos] = useState<ITodos[]>([]);
-
-    const handlerInput = (event: ChangeEvent<HTMLInputElement>) => {
-        if (!task.replace(/[^\ ]*/, '')) setTask(event.target.value);
-    };
+    const handlerInput = (event: ChangeEvent<HTMLInputElement>) => setTask(event.target.value);
 
     const handlerButton = () => {
         const newTask = {
@@ -32,15 +29,20 @@ export const Todos: React.FC = () => {
 
     const handleDelete = (id: string) => setTodos(todos.filter((idTask) => idTask.id !== id));
 
+    const clearTodoList = () => {
+        setTodos([]);
+    }
+
     return (
         <div className={style.container}>
             <input type="text" onChange={handlerInput} placeholder={'New task...'} value={task} />
-            {task.length
+            {task.trim().length
                 ? <button onClick={handlerButton}>Add task</button>
                 : <button className={style.disabledButton} disabled={true}>Block</button>}
             <ShowTaskList
                 todos={todos}
                 DeleteTask={handleDelete}
+                clearTodoList={clearTodoList}
             />
         </div>
     )
