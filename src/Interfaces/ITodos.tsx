@@ -1,4 +1,4 @@
 export interface ITodos {
-    id: number,
+    id: string,
     task: string
 }

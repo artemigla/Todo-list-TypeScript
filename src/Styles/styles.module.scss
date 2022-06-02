@@ -32,6 +32,9 @@
     font-size: medium;
     padding: 3px;
     cursor: pointer;
+    &.disabledButton{
+        cursor: not-allowed;
+    }
 }
 
 .listTask{
@@ -47,4 +50,10 @@
 .deleteTask button{
     background: none;
     margin-right: 7px;
+}
+
+.task{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,29 +1,30 @@
 import React from 'react';
 import { ITodos } from '../Interfaces/ITodos';
 import style from '../Styles/styles.module.scss';
-import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { AiFillDelete } from 'react-icons/ai';
 
 type PropTypes = {
-    todos: ITodos[]
+    todos: ITodos[],
+    DeleteTask: (id: string) => void,
 }
 
-export const ShowTaskList: React.FC<PropTypes> = ({ todos }) => {
+export const ShowTaskList: React.FC<PropTypes> = ({ todos, DeleteTask }) => {
 
     const ItemList = todos.map(({ id, task }) => {
         return (
             <div key={id} className={style.listTask}>
-                <h3>{task}</h3>
+                <h3 className={style.task}>{task}</h3>
                 <div className={style.deleteTask}>
-                    <button>
-                        <AiFillEdit size={21} color={'black'} />
+                    <button onClick={() => DeleteTask(id)}>
                         <AiFillDelete size={21} color={'red'} />
                     </button>
                 </div>
             </div>
-        )
+        );
     });
-
     return (
-        <div>{ItemList}</div>
+        <div>
+            {todos.length ? ItemList : (<h3>Todo list empty</h3>)}
+        </div>
     )
 }
